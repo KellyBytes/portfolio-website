@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
-import {
-  letters,
-  professionTexts,
-  aboutText,
-  socialIcons,
-} from '../data/index';
+import { letters, professionTexts, aboutText, socialIcons } from '../data/index';
 
 const Hero = () => {
   const [hoveredLetter, setHoveredLetter] = useState(null);
@@ -29,7 +24,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="w-ful h-screen flex flex-col justify-center items-center isolate">
+    <div className="w-ful h-screen flex flex-col justify-center items-center isolate relative z-10">
       <NavBar />
       <div className="flex flex-col md:items-center items-start xl:gap-y-10 gap-y-10 xl:mb-0 md:mb-20 mb-0">
         <h1 className="flex flex-col xl:space-y-8 md:space-y-4 space-y-2 xl:text-6xl md:text-4xl text-3xl md:font-normal font-bolder">
@@ -45,9 +40,9 @@ const Hero = () => {
                 <img
                   src={letter.img}
                   alt={`Hover image ${index + 1}`}
-                  className={`xl:h-36 h-24 absolute bottom-full -translate-x-1/2 ${
-                    letter.rotate
-                  } ${hoveredLetter === index ? 'visible' : 'invisible'}`}
+                  className={`xl:h-36 h-24 absolute bottom-full -translate-x-1/2 ${letter.rotate} ${
+                    hoveredLetter === index ? 'visible' : 'invisible'
+                  }`}
                 />
               </span>
             ))}
@@ -71,9 +66,7 @@ const Hero = () => {
           onMouseLeave={() => setRoadImageOpacity(0.5)}
         >
           {isTextVisible ? 'Hide My Story' : 'Read My Story'}{' '}
-          <i
-            className={`bx bx-${isTextVisible ? 'book-alt' : 'book-open'}`}
-          ></i>
+          <i className={`bx bx-${isTextVisible ? 'book-alt' : 'book-open'}`}></i>
         </button>
         <div className="flex md:gap-12 gap-2 mr-auto">
           {socialIcons.map((social, index) => (
